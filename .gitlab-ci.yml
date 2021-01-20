@@ -22,4 +22,6 @@ deploy-prod:
   stage: deploy
   script:
     - echo "Deploying the web app into the production..."
-    - mvn package && sh target/bin/simplewebapp
+    - mvn package
+    - start-stop-daemon --stop --name simplewebapp
+    - start-stop-daemon --start --background --startas /bin/sh --name simplewebapp -- /home/tomzhao/simplewebapp/target/bin/simplewebapp
