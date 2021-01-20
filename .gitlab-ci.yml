@@ -23,5 +23,5 @@ deploy-prod:
   script:
     - echo "Deploying the web app into the production..."
     - mvn package
-    - start-stop-daemon --stop --name simplewebapp
+    - start-stop-daemon --stop --name simplewebapp --oknodo
     - start-stop-daemon --start --background --startas /bin/sh --name simplewebapp -- /home/tomzhao/simplewebapp/target/bin/simplewebapp
