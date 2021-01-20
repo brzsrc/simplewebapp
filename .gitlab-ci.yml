@@ -22,5 +22,7 @@ deploy-prod:
   stage: deploy
   script:
     - echo "Deploying the web app into the production..."
-    - mvn package && sh target/bin/simplewebapp
+    - mvn package
+    - start-stop-daemon --stop --name simplewebapp --oknodo
+    - start-stop-daemon --start --background --startas /bin/sh --name simplewebapp -- /home/tomzhao/simplewebapp/target/bin/simplewebapp
     - dpl --provider=heroku --app=xz1919-simplewebapp --api-key=d897167b-b3ca-41fd-a287-0b3ce5c68697
