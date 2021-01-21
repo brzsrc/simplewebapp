@@ -18,16 +18,20 @@ public class IndexPage implements Page {
         // Content
         writer.println(
                 "<h1>Welcome!!</h1>" +
-                        "<p>Enter your query in the box below: " +
-                        "<form>" +
-                        "<input type=\"text\" name=\"q\" />" +
-                        "<br><br><input type=\"submit\">" +
-                        "</form>" +
-                        "</p>");
+                "<p>Enter your query in the box below: " +
+                "<form>" +
+                "<input type=\"text\" name=\"q\" /><br><br>" +
+                "<fieldset id=\"radiogroup\">" +
+                    "<input type=\"radio\" name=\"format\" value=\"html\"> <label for=\"html\">HTML</label><br>" +
+                    "<input type=\"radio\" name=\"format\" value=\"markdown\"> <label for=\"markdown\">Markdown</label><br>" +
+                    "<input type=\"radio\" name=\"format\" value=\"pdf\"> <label for=\"pdf\">Pdf</label><br>" +
+                "</fieldset>" +
+                "<input type=\"submit\">" +
+                "</form>" +
+                "</p>");
 
         // Footer
         writer.println("</body>");
         writer.println("</html>");
     }
-    
 }

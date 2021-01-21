@@ -4,6 +4,7 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.not;
 import static org.junit.Assert.assertThat;
 
 public class QueryProcessorTest {
@@ -43,6 +44,6 @@ public class QueryProcessorTest {
     @Test
     public void willOnlyMatchTheFirstAuthor() throws Exception {
     	assertThat(queryProcessor.process("shakespeare asimov"), containsString("playwright"));
-	assertThat(queryProcessor.process("shakespeare asimov"), not(containsString("science fiction")));
+	assertThat(queryProcessor.process("shakespeare asimov"), is(not(containsString("science fiction"))));
     }
 }
