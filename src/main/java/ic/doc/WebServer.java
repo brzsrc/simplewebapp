@@ -2,8 +2,8 @@ package ic.doc;
 
 import ic.doc.web.HTMLResultPage;
 import ic.doc.web.IndexPage;
-import ic.doc.web.MarkdownPage;
-import ic.doc.web.PdfPage;
+import ic.doc.web.MarkdownPdfPage;
+
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -29,14 +29,12 @@ public class WebServer {
         @Override
         protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
             String query = req.getParameter("q");
-            
+            String format = req.getParameter("format");
             if (query == null) {
                 new IndexPage().writeTo(resp);
-            } else if (req.getParameter("format").equals("markdown")) {
-                new MarkdownPage(query, new QueryProcessor().process(query)).writeTo(resp);
-            // } else if (req.getParameter("format").equals("pdf")) {
-            //     new PdfPage(query, new QueryProcessor().process(query).writeTo(resp));
-            } else if (req.getParameter("format").equals("html")) {
+            } else if (format.equals("markdown") || format.equals("pdf")) {
+                new MarkdownPdfPage(query, new QueryProcessor().process(query), format).writeTo(resp);
+            } else if (format.equals("html")) {
                 new HTMLResultPage(query, new QueryProcessor().process(query)).writeTo(resp);
             }
         }

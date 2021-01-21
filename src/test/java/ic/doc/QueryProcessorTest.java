@@ -44,6 +44,6 @@ public class QueryProcessorTest {
     @Test
     public void willOnlyMatchTheFirstAuthor() throws Exception {
     	assertThat(queryProcessor.process("shakespeare asimov"), containsString("playwright"));
-	assertThat(queryProcessor.process("shakespeare asimov"), is(not(containsString("science fiction"))));
+	    assertThat(queryProcessor.process("shakespeare asimov"), is(not(containsString("science fiction"))));
     }
 }
