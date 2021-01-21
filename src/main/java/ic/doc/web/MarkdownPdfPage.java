@@ -71,7 +71,7 @@ public class MarkdownPdfPage implements Page {
             
             int size = fi.available();
             resp.setContentLength(size);
-            byte data[] = new byte[size];
+            byte[] data = new byte[size];
             fi.read(data);
 
             OutputStream os = resp.getOutputStream();
