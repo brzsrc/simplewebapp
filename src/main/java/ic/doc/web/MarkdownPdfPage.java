@@ -66,6 +66,7 @@ public class MarkdownPdfPage implements Page {
                 // Footer
                 writer.println("</body>");
                 writer.println("</html>");
+                return;
             }
             
             int size = fi.available();
