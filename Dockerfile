@@ -1,8 +1,6 @@
 FROM ubuntu
 RUN apt-get update && \
-    apt-get install -y maven && \
-    apt-get install -y openjdk-11-jre openjdk-11-jdk && \
-    apt-get install -y pandoc
+    apt-get install -y maven openjdk-11-jre openjdk-11-jdk pandoc pdflatex texlive-xetex
 COPY . /simplewebapp
 RUN mvn -f /simplewebapp package
 ENV PORT=8080
