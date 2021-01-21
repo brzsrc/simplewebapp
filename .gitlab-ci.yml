@@ -4,7 +4,8 @@ variables:
 stages:
     - build
     - test
-    - deploy
+    - staging
+    - production
 
 build-job:
   stage: build
@@ -18,11 +19,15 @@ test-job:
     - echo "Testing the web app..."
     - mvn test
 
-deploy-prod:
-  stage: deploy
+deploy-staging:
+  stage: staging
   script:
     - echo "Deploying the web app into the production..."
     - mvn package
     - start-stop-daemon --stop --name simplewebapp --oknodo
     - start-stop-daemon --start --background --startas /bin/sh --name simplewebapp -- /home/tomzhao/simplewebapp/target/bin/simplewebapp
+
+deploy-prod:
+  stage: production
+  script:
     - dpl --provider=heroku --app=xz1919-simplewebapp --api-key=d897167b-b3ca-41fd-a287-0b3ce5c68697
