@@ -25,7 +25,7 @@ deploy-staging:
     - echo "Deploying the web app into the production..."
     - mvn package
     - start-stop-daemon --stop --name simplewebapp --oknodo
-    - start-stop-daemon --start --startas /bin/sh --name simplewebapp -- $PWD/target/bin/simplewebapp
+    - start-stop-daemon --start --background --startas /bin/sh --name simplewebapp -- $PWD/target/bin/simplewebapp
 
 deploy-prod:
   stage: production
