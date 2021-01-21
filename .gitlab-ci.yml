@@ -24,8 +24,8 @@ deploy-staging:
   script:
     - echo "Deploying the web app into the production..."
     - mvn package
-    - start-stop-daemon --stop --pidfile /run/simplewebapp.pid --remove-pidfile --oknodo
-    - start-stop-daemon --start --background --startas /bin/sh --make-pidfile --pidfile /run/simplewebapp.pid -- $PWD/target/bin/simplewebapp
+    - start-stop-daemon --stop --pidfile /tmp/simplewebapp.pid --remove-pidfile --oknodo
+    - start-stop-daemon --start --background --startas /bin/sh --make-pidfile --pidfile /tmp/simplewebapp.pid -- $PWD/target/bin/simplewebapp
 
 deploy-prod:
   stage: production
