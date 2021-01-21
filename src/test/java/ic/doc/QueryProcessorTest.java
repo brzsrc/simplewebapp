@@ -26,7 +26,23 @@ public class QueryProcessorTest {
     }
 
     @Test
+    public void knowsAboutJamesBaldwin() throws Exception {
+    	assertThat(queryProcessor.process("James Baldwin"), containsString("activist"));
+    }
+
+    @Test
+    public void knowsAboutEmilyBronte() throws Exception {
+    	assertThat(queryProcessor.process("Emily Bronte"), containsString("English novelist"));
+    }
+
+    @Test
     public void isNotCaseSensitive() throws Exception {
         assertThat(queryProcessor.process("shakespeare"), containsString("playwright"));
+    }
+
+    @Test
+    public void willOnlyMatchTheFirstAuthor() throws Exception {
+    	assertThat(queryProcessor.process("shakespeare asimov"), containsString("playwright"));
+	assertThat(queryProcessor.process("shakespeare asimov"), not(containsString("science fiction")));
     }
 }
