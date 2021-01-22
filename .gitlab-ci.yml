@@ -31,8 +31,8 @@ deploy-staging:
     - start-stop-daemon --start --background --startas /bin/sh --make-pidfile --pidfile /tmp/simplewebapp.pid -- $PWD/target/bin/simplewebapp
 
 deploy-prod:
+  image: ruby:2.6
   stage: production
   script:
-    - apt install ruby
     - gem install dpl
     - dpl --provider=heroku --app=xz1919-simplewebapp --api-key=d897167b-b3ca-41fd-a287-0b3ce5c68697
