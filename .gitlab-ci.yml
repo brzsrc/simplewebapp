@@ -34,5 +34,5 @@ deploy-prod:
   image: ruby:2.6
   stage: production
   script:
-    - sudo gem install dpl
+    - gem install dpl
     - dpl --provider=heroku --app=xz1919-simplewebapp --api-key=d897167b-b3ca-41fd-a287-0b3ce5c68697
